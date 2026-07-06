@@ -1,0 +1,417 @@
+/* ==========================================================================
+   1. GLOBAL STYLES & RESET
+   ========================================================================== */
+:root {
+  --primary: #2b6cb0; /* Professional blue */
+  --primary-dark: #2c5282;
+  --bg: #f7fafc; /* Light gray background */
+  --surface: #ffffff; /* Card/Form background */
+  --text-main: #2d3748; /* Dark gray for readability */
+  --text-muted: #718096;
+  --error: #e53e3e; /* Clean red for validation */
+  --border: #e2e8f0;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   2. GLOBAL LAYOUT & NAVBAR
+   ========================================================================== */
+header {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+header h2 {
+  font-size: 1.4rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+nav a {
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-email {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   3. BUTTONS
+   ========================================================================== */
+button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+}
+
+button:disabled {
+  background-color: var(--text-muted);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Secondary style variant for logout button */
+nav button {
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+nav button:hover {
+  background-color: #fff5f5;
+  color: var(--error);
+  border-color: #fed7d7;
+}
+
+/* ==========================================================================
+   4. PAGES & FORMS (Register / Login / Tools)
+   ========================================================================== */
+.pages {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+form h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--text-main);
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+form button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Error Alert Box */
+.error-message {
+  background-color: #fff5f5;
+  color: var(--error) !important;
+  border: 1px solid #fed7d7;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 1.2rem;
+}
+
+/* ==========================================================================
+   5. HOME DASHBOARD & TOOL CARDS
+   ========================================================================== */
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tools-section h2 {
+  font-size: 1.8rem;
+  color: var(--text-main);
+  margin-bottom: 0.2rem;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.tool-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.tool-card h4 {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  text-transform: capitalize;
+}
+
+.tool-card p {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+
+.tool-card p strong {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tool-card .tool-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.loading,
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   6. SIDE-BY-SIDE DASHBOARD LAYOUT
+   ========================================================================== */
+.home-layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2.5rem;
+}
+
+form select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  background-color: var(--surface);
+}
+
+form select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Override general center form styles specifically for the dashboard side-form */
+.create-tool-form {
+  max-width: 100%;
+  height: fit-content;
+  position: sticky;
+  top: 100px; /* Kept pinned when scrolling through a massive grid */
+}
+
+@media (max-width: 900px) {
+  .home-layout {
+    grid-template-columns: 1fr;
+  }
+  .create-tool-form {
+    position: static;
+    order: -1; /* Puts form at top on smaller screens */
+  }
+}
+
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  resize: vertical; /* Allows users to drag up/down but not sideways */
+  font-family: inherit;
+}
+
+form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ==========================================================================
+   7. TOOL CARD DELETE BUTTON
+   ========================================================================== */
+.tool-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.delete-btn {
+  background: transparent;
+  color: #e53e3e;
+  border: 1px solid #fed7d7;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: #fff5f5;
+  border-color: #e53e3e;
+}
+
+.status-badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.status-badge.available {
+  background: #c6f6d5;
+  color: #22543d;
+}
+.status-badge.borrowed {
+  background: #feebc8;
+  color: #744210;
+}
+
+.card-actions {
+  margin-top: 1rem;
+}
+
+.borrow-btn {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.borrow-btn.return {
+  background: #4a5568;
+}
+
+.borrow-btn:hover {
+  opacity: 0.9;
+}
+
+.owner-label {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0.5rem;
+  background: var(--background);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+}
