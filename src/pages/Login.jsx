@@ -33,6 +33,7 @@ const Login = () => {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          autoComplete="current-password"
           required
         />
 
