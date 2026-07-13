@@ -3,6 +3,8 @@ import { useAuth } from '../hooks/useAuth';
 import axios from 'axios';
 import ToolForm from '../components/ToolForm';
 
+const API_URL = 'https://tools-library-backend.onrender.com';
+
 const Home = () => {
   const [tools, setTools] = useState(null);
   const [error, setError] = useState(null);
@@ -13,7 +15,7 @@ const Home = () => {
     const fetchTools = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('/api/tools/dashboard', {
+        const response = await axios.get(`${API_URL}/api/tools/dashboard`, {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
@@ -41,7 +43,7 @@ const Home = () => {
 
     try {
       // Send DELETE request to your backend with the tool's unique ID
-      await axios.delete(`/api/tools/${toolId}`, {
+      await axios.delete(`${API_URL}/api/tools/${toolId}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -59,7 +61,7 @@ const Home = () => {
 
     try {
       const response = await axios.patch(
-        `/api/tools/${toolId}/borrow`,
+        `${API_URL}/api/tools/${toolId}/borrow`,
         {},
         {
           headers: {

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useAuth } from './useAuth';
 import axios from 'axios';
 
+const API_URL = 'https://tools-library-backend.onrender.com';
+
 export const useRegister = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +14,7 @@ export const useRegister = () => {
     setError(null);
 
     try {
-      const response = await axios.post('/api/auth/register', {
+      const response = await axios.post(`${API_URL}/api/auth/register`, {
         name,
         email,
         password,

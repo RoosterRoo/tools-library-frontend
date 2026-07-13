@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import axios from 'axios';
 
+const API_URL = 'https://tools-library-backend.onrender.com';
+
 const ToolForm = ({ onToolAdded }) => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
@@ -26,7 +28,7 @@ const ToolForm = ({ onToolAdded }) => {
     const tool = { name, category, quantity: Number(quantity), description };
 
     try {
-      const response = await axios.post('/api/tools', tool, {
+      const response = await axios.post(`${API_URL}/api/tools`, tool, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },

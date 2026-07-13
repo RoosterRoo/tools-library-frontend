@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useAuth } from './useAuth';
 import axios from 'axios';
 
+const API_URL = 'https://tools-library-backend.onrender.com';
+
 export const useLogin = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,7 +15,10 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const response = await axios.post(`${API_URL}/api/auth/login`, {
+        email,
+        password,
+      });
 
       // Save user & token to local storage
       localStorage.setItem('user', JSON.stringify(response.data));
