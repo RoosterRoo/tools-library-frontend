@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import axios from 'axios';
 import ToolForm from '../components/ToolForm';
 
-const API_URL = 'https://tools-library-backend.onrender.com';
+const API_URL = import.meta.env.VITE_API_URL;
 
 const Home = () => {
   const [tools, setTools] = useState(null);
